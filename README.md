@@ -12,15 +12,15 @@ DB:
 2. Create a Database with  name - 'dwh_challenge'.
 3. Run  scripts in SQL_Scripts folder (DDL scripts,Load_Active_Users,Load_Campaign_Performance) in the databse created above.
 4. Make sure below tables are created in the DB 'dwh_challenge':
-    ### Intermediate or staging tables:
-      i.user_data
-      ii.event_data
-    ### Target Tables:
-      iii.active_users
-      iv.campaign_performance
-5.Make sure below stored procedures are created after running above SQL scripts:
-    i.Load_Active_Users
-    ii.Load_Campaign_Performance
+     * Intermediate or staging tables:
+        * user_data
+        * event_data
+     * Target Tables:
+        * active_users
+        * campaign_performance
+5. Make sure below stored procedures are created after running above SQL scripts:
+     * Load_Active_Users
+     * Load_Campaign_Performance
 
 
 Python:
@@ -31,8 +31,10 @@ Python:
 
 
 # Steps to be followed:
-1.Copy the zip folder as it is on your desktop (or the loaction where you wish to).
-2.Please place both source files in the input path - ..\SparkNetworks_dwh\dwh\input\
-3.Once files are placed, Open terminal and run the ETL_MySql.py from console as below:
-  python .../<path to ETL_MySql.py >/ETL_MySql.py
-4.Once it is run, check data in target tables - campaign_performance,active_users
+1. Copy the zip folder as it is on your desktop (or the loaction where you wish to).
+2. Please place both source files in the input path - ..\SparkNetworks_dwh\dwh\input\
+3. Once files are placed, Open terminal and run the ETL_MySql.py from console as below:
+   *** python  /...path to ETL_MySql.py .../ETL_MySql.py ***
+4. Once it is run, check data in target tables - campaign_performance,active_users
+
+----------------------------------------------End---------------------------------------------------
