@@ -24,16 +24,16 @@ DB:
 
 Python:
 1. As this utility is written in python it has to be present.
-2. Make sure install the requirements using ***'pip install requirements.txt'*** command in the terminal. <requirements.txt is in ***..\SparkNetworks_dwh\requirements.txt>***
-3. Setup your DB connection parameters in ***'Database_Params'*** in the path ***..\SparkNetworks_dwh\dwh***
+2. Make sure install the requirements using ***'pip install -r ..\path_to_this_file..\requirements.txt'*** command in the terminal. <requirements.txt is in ***..\SparkNetworks_dwh\requirements.txt>***
+3. Setup your DB connection parameters in ***'Database_Params.ini'*** file in the path ***..\SparkNetworks_dwh\dwh***
 
 
 
 # Steps to be followed:
-1. Copy the zip folder as it is on your desktop (or the loaction where you wish to).
+1. Download the code as it is on your desktop (or the loaction where you wish to).
 2. Please place both source files in the input path - ..\SparkNetworks_dwh\dwh\input\
 3. Once files are placed, Open terminal and run the ETL_MySql.py from console as below:
-   ***python  /...path to ETL_MySql.py .../ETL_MySql.py***
+   ***python  /path to ETL_MySql.py.../ETL_MySql.py***
 4. Once it is run, check data in target tables - campaign_performance,active_users
 
 ----------------------------------------------End---------------------------------------------------
