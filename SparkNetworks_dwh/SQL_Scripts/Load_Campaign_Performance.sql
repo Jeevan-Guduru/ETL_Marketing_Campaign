@@ -1,4 +1,6 @@
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Load_Mail_Campaign_performance`()
+DROP procedure IF EXISTS `Load_Mail_Campaign_performance`;
+
+CREATE PROCEDURE `Load_Mail_Campaign_performance`()
 BEGIN
 
 /*Dropping existing indexes*/
