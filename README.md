@@ -3,7 +3,6 @@
 # Introduction:
 
 This utility which is developed in python and sql  consumes data from source files - user_data.csv and event_data.csv and loads into mysql DB after performing given transformations and analysis.
-It begins with preprocessing of data - like anonymising sensitive data , formatting date fields and string fields as required.
 
 # Pre-requisites:
 
