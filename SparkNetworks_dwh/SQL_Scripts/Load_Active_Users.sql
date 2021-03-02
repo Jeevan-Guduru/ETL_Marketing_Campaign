@@ -1,4 +1,4 @@
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Load_Active_Users`()
+CREATE  PROCEDURE `Load_Active_Users`()
 BEGIN
 
 TRUNCATE TABLE active_users;
