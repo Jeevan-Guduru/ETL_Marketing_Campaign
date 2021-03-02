@@ -12,10 +12,10 @@ DB:
 2. Create a Database with  name - 'dwh_challenge'.
 3. Run  scripts in SQL_Scripts folder (DDL scripts,Load_Active_Users,Load_Campaign_Performance) in the databse created above.
 4. Make sure below tables are created in the DB 'dwh_challenge':
-    # Intermediate or staging tables:
+    Intermediate or staging tables:
       i.user_data
       ii.event_data
-    # Target Tables:
+     Target Tables:
       iii.active_users
       iv.campaign_performance
  5.Make sure below stored procedures are created after running above SQL scripts:
