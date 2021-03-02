@@ -1,3 +1,5 @@
+DROP procedure IF EXISTS `Load_Active_Users`;
+
 CREATE  PROCEDURE `Load_Active_Users`()
 BEGIN
 
