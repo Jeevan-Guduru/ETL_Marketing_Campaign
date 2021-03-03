@@ -5,7 +5,8 @@ CREATE TABLE `active_users` (
   `Active_users` int DEFAULT NULL,
   `Consecutive_days_per_user` int DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 
 
 
@@ -17,7 +18,8 @@ CREATE TABLE `campaign_performance` (
   `provider_domain` varchar(255) DEFAULT NULL,
   `provider_event_rate` decimal(10,2) DEFAULT NULL,
   `overall_event_rate` decimal(10,2) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 
 
 DROP TABLE IF EXISTS `event_data`;
@@ -29,8 +31,9 @@ CREATE TABLE `event_data` (
   `user_id` int DEFAULT NULL,
   `week_number` int DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `ix_event_data_userid` (`user_id`,`week_number`)
-) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `ix_test` (`user_id`,`week_number`),
+  KEY `ux_test` (`user_id`,`week_number`) USING BTREE
+) ENGINE=MyISAM AUTO_INCREMENT=1048575 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
 
@@ -39,9 +42,9 @@ DROP TABLE IF EXISTS `user_data`;
 CREATE TABLE `user_data` (
   `user_id` int NOT NULL,
   `email` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`user_id`),
-  KEY `ux_user_data_userid` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`user_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 
 
 
