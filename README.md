@@ -5,11 +5,11 @@
 This utility which is developed in python and sql  consumes data from source files - user_data.csv and event_data.csv and loads into mysql DB after performing required transformations and analysis.
 
 # project Structure:
-1. Main Folder : ***SparkNetworks_dwh
+1. Main Folder : ***SparkNetworks_dwh***
     * contents : 
         1. SQL_Scripts
         2. requirements.txt
-2. Sub folder inside above folder : ***dwh
+2. Sub folder inside above folder : ***dwh***
      * Contents:
         1. ETL_MySql.py - which comprises of the main code and entry point
         2. _init_.py -init file
@@ -47,7 +47,7 @@ Python:
 
 # Steps to be followed:
 1. Download the code as it is on your desktop (or the loaction where you wish to).
-2. Please place both source files in the input path - ***..\SparkNetworks_dwh\dwh\input\
+2. Please place both source files in the input path - ***..\SparkNetworks_dwh\dwh\input\***
 3. Once files are placed, Open terminal and run the ETL_MySql.py from console as below:
    ***python  ../path to ETL_MySql.py.../ETL_MySql.py***
 4. Once it is run, check data is loaded into target tables - ***campaign_performance,active_users***.
