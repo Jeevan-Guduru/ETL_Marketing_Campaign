@@ -2,9 +2,9 @@
 
 # Introduction:
 
-This utility which is developed in python and sql  consumes data from source files - user_data.csv and event_data.csv and loads into mysql DB after performing given transformations and analysis.
+This utility which is developed in python and sql  consumes data from source files - user_data.csv and event_data.csv and loads into mysql DB after performing required transformations and analysis.
 
-# Pre-requisites:
+# Pre-requisites and setup:
 
 DB:
 1. MYSql is the DB where target data is stored. Please make sure it is set up.
@@ -17,14 +17,16 @@ DB:
      * Target Tables:
         * active_users
         * campaign_performance
-5. Make sure below stored procedures are created after running above SQL scripts:
+5. Make sure below stored procedures are created after running above SQL scripts.:
      * Load_Active_Users
      * Load_Campaign_Performance
 
+#### Note: These stored procedures are written for performing transformations and for loading the target tables.
+
 
 Python:
-1. As this utility is written in python it has to be present.
-2. Make sure install the requirements using ***'pip install -r ..\path_to_this_file..\requirements.txt'*** command in the terminal. <requirements.txt is in ***..\SparkNetworks_dwh\requirements.txt>***
+1. As this utility is written in python it has to be present in the users machine.
+2. Make sure to install the dependencies which are present in ***requirements.txt***, using ***'pip install -r ..\path_to_this_file..\requirements.txt'*** command in the terminal. <requirements.txt is in ***..\SparkNetworks_dwh\requirements.txt>***
 3. Setup your DB connection parameters in ***'Database_Params.ini'*** file in the path ***..\SparkNetworks_dwh\dwh***
 
 
@@ -33,7 +35,7 @@ Python:
 1. Download the code as it is on your desktop (or the loaction where you wish to).
 2. Please place both source files in the input path - ..\SparkNetworks_dwh\dwh\input\
 3. Once files are placed, Open terminal and run the ETL_MySql.py from console as below:
-   ***python  /path to ETL_MySql.py.../ETL_MySql.py***
-4. Once it is run, check data in target tables - campaign_performance,active_users
+   ***python  ../path to ETL_MySql.py.../ETL_MySql.py***
+4. Once it is run, check data is loaded into target tables - ***campaign_performance,active_users***.
 
 ----------------------------------------------End---------------------------------------------------
