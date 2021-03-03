@@ -62,10 +62,12 @@ def user_data_extract(Filepath):
 
             2.Also calls Data masking method that anonymises 'user_id' and 'email' fields of 'user_data.csv' as per the requirement.
         '''
-
-        user_data_df=dd.read_csv(Filepath,delimiter=';',usecols=['user_id','email'])
+        logger.info("Extracting user data from source file user_data.csv")
+        user_data_df=dd.read_csv(Filepath,usecols=['user_id','email'])
         user_data_df=user_data_df.compute() #converting dask dataframe to pandas dataframe for further processing
         user_data_df=data_masking(user_data_df)
+        count_user_data=len(user_data_df)
+        logger.info("{} records fetched from event_data.csv!".format(count_user_data))
         return user_data_df
 
 
@@ -91,12 +93,15 @@ def event_data_extract(Filepath):
         4.Also calls Data masking method to anonymizes user_id field of 'event_data.csv' as per the requirement.
 
     '''
-    event_data_df=dd.read_csv(Filepath,delimiter=';',usecols=['event_date','event_id','user_id'])
+    logger.info("Extracting event data from source file event_data.csv")
+    event_data_df=dd.read_csv(Filepath,usecols=['event_date','event_id','user_id'])
     event_data_df=event_data_df.compute() #converting dask dataframe to pandas dataframe for further processing
     event_data_df.event_date= pd.to_datetime(event_data_df.event_date,format='%d.%m.%y')
     #inserting week number column
     event_data_df.insert(3,'week_number',pd.Series([date.strftime("%V") for date in list(event_data_df.event_date)]))
     event_data_df=data_masking(event_data_df)
+    count_user_data=len(event_data_df)
+    logger.info("{} records fetched from event_data.csv!".format(count_user_data))
     return event_data_df
 
 
@@ -116,7 +121,7 @@ def data_masking(data_df):
     
     1.This fucntion anonymises the user sensitive information as below:
 
-        user_id: it is multiplied with 5 and converted the result to octadecimal. 
+        user_id: it is multiplied with 5 and then converted this result to octadecimal. 
         Also replaced additional letter 'o' in the resultant which indicates that number is octadecimal with ''.
 
         email: only retained domain name after '@' by removing the user name.
@@ -171,7 +176,7 @@ def ingest_to_temp_tables(connection,event_data_df,user_data_df,event_table_name
     event_data_df.index+=1
     event_data_df.to_csv(load_infile_path[0]+r"event_data_temp.csv",index_label='id',chunksize=1000)
     
-    logger.info("Ingesting source data to DB...")
+    logger.info("Ingesting source data to temp tables in DB ... ")
     
     #3
     user_data_load_sql="LOAD DATA INFILE "+"\""+load_infile_path[0]+r"user_data_temp.csv"+"\""+" INTO TABLE "+user_table_name+" FIELDS TERMINATED BY ',' ENCLOSED BY '\"' IGNORE 1 LINES;"
