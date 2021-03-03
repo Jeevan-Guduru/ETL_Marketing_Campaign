@@ -1,6 +1,9 @@
-DROP TABLE IF EXISTS `active_users`;
+CREATE DATABASE IF NOT EXISTS dwh_challenge;
 
-CREATE TABLE `active_users` (
+
+DROP TABLE IF EXISTS dwh_challenge.`active_users`;
+
+CREATE TABLE dwh_challenge.`active_users` (
   `id` int NOT NULL AUTO_INCREMENT,
   `Active_users` int DEFAULT NULL,
   `Consecutive_days_per_user` int DEFAULT NULL,
@@ -10,9 +13,9 @@ CREATE TABLE `active_users` (
 
 
 
-DROP TABLE IF EXISTS `campaign_performance`;
+DROP TABLE IF EXISTS dwh_challenge.`campaign_performance`;
 
-CREATE TABLE `campaign_performance` (
+CREATE TABLE dwh_challenge.`campaign_performance` (
   `Week_number` int DEFAULT NULL,
   `anonymized_user_id` varchar(255) DEFAULT NULL,
   `provider_domain` varchar(255) DEFAULT NULL,
@@ -22,9 +25,9 @@ CREATE TABLE `campaign_performance` (
 
 
 
-DROP TABLE IF EXISTS `event_data`;
+DROP TABLE IF EXISTS dwh_challenge.`event_data`;
 
-CREATE TABLE `event_data` (
+CREATE TABLE dwh_challenge.`event_data` (
   `id` int NOT NULL AUTO_INCREMENT,
   `event_date` date DEFAULT NULL,
   `event_id` int DEFAULT NULL,
@@ -37,9 +40,9 @@ CREATE TABLE `event_data` (
 
 
 
-DROP TABLE IF EXISTS `user_data`;
+DROP TABLE IF EXISTS dwh_challenge.`user_data`;
 
-CREATE TABLE `user_data` (
+CREATE TABLE dwh_challenge.`user_data` (
   `user_id` int NOT NULL,
   `email` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`user_id`)
