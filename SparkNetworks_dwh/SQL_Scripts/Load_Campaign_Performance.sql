@@ -27,7 +27,7 @@ TRUNCATE TABLE campaign_performance;
 
 /*Inserting data into Tatrget table*/
     
-EXPLAIN INSERT INTO campaign_performance
+INSERT INTO campaign_performance
 (
 	 Week_number
 	,anonymized_user_id
