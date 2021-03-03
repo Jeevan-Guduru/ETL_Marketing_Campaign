@@ -1,0 +1,87 @@
+
+-----------------------------***********--------------------------------------------------
+Initially it took around 6 minutes to load 1 million rows into DB
+Tables were loaded with pandas to_sql method.
+
+PS C:\Users\JEEVAN> python C:\Users\JEEVAN\Desktop\SparkNetworks_dwh\dwh\ETL_MySql.py
+2021-03-03 17:29:56,591 | numexpr.utils | INFO | NumExpr defaulting to 4 threads.
+2021-03-03 17:29:57,208 | __main__ | INFO | Extracting event data from source file ..
+2021-03-03 17:30:06,233 | __main__ | INFO | Extraction completed!
+2021-03-03 17:30:06,233 | __main__ | INFO | Extracting user data from source file ..
+2021-03-03 17:30:10,229 | __main__ | INFO | Extraction completed!
+2021-03-03 17:30:12,589 | sql_wrapper | INFO | Connecting to the mysql database...
+event_data
+user_data
+['C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/']
+2021-03-03 17:30:12,696 | __main__ | INFO | Loading data into temp files...
+2021-03-03 17:30:30,463 | __main__ | INFO | Loading data into temp files completed
+2021-03-03 17:30:30,463 | __main__ | INFO | Ingesting source data into DB from temp files...
+2021-03-03 17:35:39,225 | __main__ | INFO | Source Data ingested to DB successfully!!
+2021-03-03 17:35:39,227 | sql_wrapper | INFO | Commit done!
+2021-03-03 17:35:39,228 | sql_wrapper | INFO | DB connection closed.
+
+
+---------------------**********-------------------------------------------------------------------
+
+
+Post optimisation with Load Infile query, it took around 32 seconds to load 1 million rows into temp tables 
+after extraction and preprocessing.
+
+--> Load Data Infile <file_path> into table <table_name> <----
+
+PS C:\Users\JEEVAN> python C:\Users\JEEVAN\Desktop\SparkNetworks_dwh\dwh\ETL_MySql.py
+2021-03-03 18:03:12,673 | numexpr.utils | INFO | NumExpr defaulting to 4 threads.
+2021-03-03 18:03:12,804 | __main__ | INFO | Extracting event data from source file ..
+2021-03-03 18:03:20,219 | __main__ | INFO | Extraction completed!
+2021-03-03 18:03:20,219 | __main__ | INFO | Extracting user data from source file ..
+2021-03-03 18:03:23,389 | __main__ | INFO | Extraction completed!
+2021-03-03 18:03:24,360 | sql_wrapper | INFO | Connecting to the mysql database...
+event_data
+user_data
+['C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/']
+2021-03-03 18:03:24,519 | __main__ | INFO | Loading data into temp files...
+2021-03-03 18:03:39,735 | __main__ | INFO | Loading data into temp files completed
+2021-03-03 18:03:39,735 | __main__ | INFO | Ingesting source data into DB from temp files...
+2021-03-03 18:04:12,346 | __main__ | INFO | Source Data ingested to DB successfully!!
+2021-03-03 18:04:12,348 | sql_wrapper | INFO | Commit done!
+2021-03-03 18:04:12,350 | sql_wrapper | INFO | DB connection closed.
+PS C:\Users\JEEVAN> python C:\Users\JEEVAN\Desktop\SparkNetworks_dwh\dwh\ETL_MySql.py
+2021-03-03 18:10:42,426 | numexpr.utils | INFO | NumExpr defaulting to 4 threads.
+2021-03-03 18:10:42,567 | __main__ | INFO | Extracting event data from source file ..
+2021-03-03 18:10:50,061 | __main__ | INFO | Extraction completed!
+2021-03-03 18:10:50,077 | __main__ | INFO | Extracting user data from source file ..
+2021-03-03 18:10:53,174 | __main__ | INFO | Extraction completed!
+2021-03-03 18:10:53,670 | sql_wrapper | INFO | Connecting to the mysql database...
+event_data
+user_data
+['C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/']
+2021-03-03 18:10:53,716 | __main__ | INFO | Loading data into temp files...
+2021-03-03 18:11:08,577 | __main__ | INFO | Loading data into temp files completed
+2021-03-03 18:11:08,577 | __main__ | INFO | Ingesting source data into DB from temp files...
+2021-03-03 18:11:42,688 | __main__ | INFO | Source Data ingested to DB successfully!!
+2021-03-03 18:11:42,689 | sql_wrapper | INFO | Commit done!
+2021-03-03 18:11:42,690 | sql_wrapper | INFO | DB connection closed.
+
+
+
+------------------------------- logs for job after including Transformations which are applied on more than 1 million rows of event data ----------------
+
+time taken : 98 secs (for extraction, preprocessing,transformations and load)
+
+2021-03-03 22:13:20,618 | numexpr.utils | INFO | NumExpr defaulting to 4 threads.
+2021-03-03 22:13:20,770 | __main__ | INFO | Extracting event data from source file event_data.csv
+2021-03-03 22:13:28,081 | __main__ | INFO | 1048573 records fetched from event_data.csv!
+2021-03-03 22:13:28,081 | __main__ | INFO | Extracting user data from source file user_data.csv
+2021-03-03 22:13:28,147 | __main__ | INFO | 1000 records fetched from event_data.csv!
+2021-03-03 22:13:28,466 | sql_wrapper | INFO | Connecting to the mysql database...
+2021-03-03 22:13:41,331 | __main__ | INFO | Ingesting source data to temp tables in DB ...
+2021-03-03 22:13:58,970 | __main__ | INFO | Source Data ingested to DB successfully!!
+2021-03-03 22:13:58,971 | sql_wrapper | INFO | Commit done!
+2021-03-03 22:13:58,971 | sql_wrapper | INFO | DB connection closed.
+2021-03-03 22:13:59,078 | sql_wrapper | INFO | Connecting to the mysql database...
+2021-03-03 22:13:59,078 | __main__ | INFO | Applying Transformations..
+2021-03-03 22:13:59,079 | __main__ | INFO | Loading Target tables..
+2021-03-03 22:14:58,643 | __main__ | INFO | Transformations applied and Target tables loaded successfully.
+2021-03-03 22:14:58,644 | __main__ | INFO | EXIT 0
+2021-03-03 22:14:58,646 | sql_wrapper | INFO | Commit done!
+2021-03-03 22:14:58,647 | sql_wrapper | INFO | DB connection closed.
