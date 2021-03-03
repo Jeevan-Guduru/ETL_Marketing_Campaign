@@ -27,7 +27,7 @@ CREATE TABLE dwh_challenge.`campaign_performance` (
 
 DROP TABLE IF EXISTS dwh_challenge.`event_data`;
 
-CREATE TABLE `event_data` (
+CREATE TABLE dwh_challenge.`event_data` (
   `id` int NOT NULL AUTO_INCREMENT,
   `event_date` date DEFAULT NULL,
   `event_id` int DEFAULT NULL,
