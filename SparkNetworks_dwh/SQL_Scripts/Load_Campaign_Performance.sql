@@ -4,24 +4,6 @@ DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE dwh_challenge.`Load_Mail_Campaign_performance`()
 BEGIN
 
-/*Dropping existing indexes*/
-DROP INDEX ix_event_data_userid on event_data;
-DROP INDEX ux_user_data_userid on user_data;
-
-/*Creating index on user_id*/    
-CREATE UNIQUE INDEX ux_user_data_userid on user_data
-(
-	user_id
-);
-
-CREATE INDEX ix_event_data_userid on event_data
-(
-	user_id,
-    week_number
-);
-
-
-
 TRUNCATE TABLE campaign_performance;
 
 
