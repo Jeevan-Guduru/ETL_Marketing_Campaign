@@ -44,3 +44,6 @@ from T;
 
 END$$
 DELIMITER ;
+
+
+commit;
