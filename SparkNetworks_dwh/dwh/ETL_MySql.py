@@ -67,7 +67,7 @@ def user_data_extract(Filepath):
         user_data_df=user_data_df.compute() #converting dask dataframe to pandas dataframe for further processing
         user_data_df=data_masking(user_data_df)
         count_user_data=len(user_data_df)
-        logger.info("{} records fetched from event_data.csv!".format(count_user_data))
+        logger.info("{} records fetched from user_data.csv!".format(count_user_data))
         return user_data_df
 
 
