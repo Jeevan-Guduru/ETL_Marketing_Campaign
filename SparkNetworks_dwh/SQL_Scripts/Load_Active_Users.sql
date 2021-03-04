@@ -37,3 +37,6 @@ order by Active_users;
 
 END$$
 DELIMITER ;
+
+
+commit;
