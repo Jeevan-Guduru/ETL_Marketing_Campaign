@@ -63,7 +63,7 @@ def user_data_extract(Filepath):
             2.Also calls Data masking method that anonymises 'user_id' and 'email' fields of 'user_data.csv' as per the requirement.
         '''
         logger.info("Extracting user data from source file user_data.csv")
-        user_data_df=dd.read_csv(Filepath,usecols=['user_id','email'])
+        user_data_df=dd.read_csv(Filepath,delimiter=';',usecols=['user_id','email'])
         user_data_df=user_data_df.compute() #converting dask dataframe to pandas dataframe for further processing
         user_data_df=data_masking(user_data_df)
         count_user_data=len(user_data_df)
@@ -94,7 +94,7 @@ def event_data_extract(Filepath):
 
     '''
     logger.info("Extracting event data from source file event_data.csv")
-    event_data_df=dd.read_csv(Filepath,usecols=['event_date','event_id','user_id'])
+    event_data_df=dd.read_csv(Filepath,delimiter=';',usecols=['event_date','event_id','user_id'])
     event_data_df=event_data_df.compute() #converting dask dataframe to pandas dataframe for further processing
     event_data_df.event_date= pd.to_datetime(event_data_df.event_date,format='%d.%m.%y')
     #inserting week number column
